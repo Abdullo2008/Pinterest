@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container mt-4">
+    <div class="row">
+        {% if search %}
+        <center>
+            <h2>You searched for "{{ search }}". <a href="{% url 'index' %}">Back to home page</a></h2>
+        </center>
+        <br>
+        {% for image in images_search %}
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'single' image.id %}">
+                <div class="card text-white bg-primary">
+                    <img href="{% url 'single' image.id %}" src="{{ image.image.url }}" height="350">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <center>
+            <h1>Enter a name of image please!</h1>
+        </center>
+        <br><br>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

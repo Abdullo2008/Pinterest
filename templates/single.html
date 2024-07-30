@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for image in images %}
+<center>
+    <h2>Image Info</h2>
+    <br>
+    <h3>Name: {{ image.name }}</h3><br>
+    <img src="{{ image.image.url }}" style="border: 10px; border-radius: 20px;" width="300px" height="300px">
+    <br><br>
+    <p>Description: {{ image.description }}</p>
+    {% if user.is_superuser %}
+    <a href="{% url 'delete' image.id %}">
+        <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+    </a>
+    {% endif %}
+</center>
+{% endfor %}
+{% endblock %}

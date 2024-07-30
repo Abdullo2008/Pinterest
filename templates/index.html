@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        {% if images %}
+        {% for image in images %}
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'single' image.id %}">
+                <div class="card text-white bg-primary">
+                    <img href="{% url 'single' image.id %}" src="{{ image.image.url }}" height="350">
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <center>
+            {% if user.is_authenticated %}
+            <h1>There's no image yet. <a href="{% url 'add' %}">Post one </a> if you want</h1>
+            {% else %}
+            <h1>There's no image yet. <a href="{% url 'login' %}">Login</a> to post</h1>
+            {% endif %}
+        </center>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

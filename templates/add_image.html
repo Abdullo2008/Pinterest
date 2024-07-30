@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>Post Image</h2>
+    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+        <fieldset>
+            <div>
+                <label class="col-form-label mt-4" for="inputDefault">Image Title</label>
+                <input type="text" class="form-control" name='name'
+                       placeholder="Enter Name(required)" id="inputDefault">
+            </div>
+            <div>
+                <label for="formFile" class="form-label mt-4">Image</label>
+                <input class="form-control" type="file" id="formFile" name="image">
+            </div>
+            <div>
+                <label for="exampleTextarea" class="form-label mt-4">Description</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"
+                          name="description" placeholder="Add a detailed description(required)"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock content %}
